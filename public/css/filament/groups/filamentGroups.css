@@ -1,10 +1,4 @@
 :root{
-    --color-success: #5ac18e;
-    --color-succss-hover: #3a815e;
-    --color-info: #5496ec;
-    --color-info-hover: #4975af;
-    --color-danger: #ed6d6d;
-    --color-danger-hover: #b64c4c;
     --group-text-1: white;
     --group-text-2: gray;
     --scrollbar-track: #f2b723;
@@ -12,17 +6,6 @@
 }
 
 /* Container to show the groups register */
-.success{
-    color: var(--color-success);
-}
-.info{
-    color: var(--color-info)
-}
-
-.danger{
-    color: var(--color-danger)
-}
-
 .groups-container{
     width: 100%;
     max-height: 770px;
@@ -82,37 +65,6 @@
     display: flex;
     align-items: center;
     justify-content: right;
-}
-
-.admin-users-icon-action{
-    width: 25px;
-    height: 25px;
-    margin-right: 5px;
-}
-
-.admin-users-icon-action:hover{
-    cursor: pointer;
-    color: var(--color-succss-hover);
-}
-
-.edit-icon-action{
-    width: 30px;
-    height: 30px;
-}
-
-.edit-icon-action:hover{
-    cursor: pointer;
-    color: var(--color-info-hover);
-}
-
-.delete-icon-action{
-    width: 25px;
-    height: 25px;
-}
-
-.delete-icon-action:hover{
-    cursor: pointer;
-    color: var(--color-danger-hover);
 }
 
 .group-stats{

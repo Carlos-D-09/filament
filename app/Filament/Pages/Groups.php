@@ -43,7 +43,15 @@ class Groups extends Page
 
     //Get the groups created by the logged users
     protected function getGroups(){
-        return Group::where('user_id',Auth::id())->withCount(['users','tasks'])->get();
+        if(Auth::user()->role->role == 'Administrador'){
+            return Group::where('user_id',Auth::id())->withCount(['users','tasks'])->get();
+        }
+
+        if(Auth::user()->role->role == 'Colaborador'){
+            return Group::whereHas('users', function($query){
+                $query->where('user_id', Auth::id());
+            })->withCount(['users','tasks'])->get();
+        }
     }
 
     protected function getHeaderActions(): array {
@@ -78,11 +86,13 @@ class Groups extends Page
                     ];
                 }
 
+                //Register users inside the group
                 GroupUser::insert($groupUsers);
 
                 // Send success notification to the page
                 Notification::make()->title('Grupo creado')->success()->send();
             })->modalCancelActionLabel('Cancelar')->modalButton('Guardar')
+            ->authorize('create',Group::class)
         ];
     }
 
@@ -148,13 +158,6 @@ class Groups extends Page
                 GroupUser::where('group_id',$group->id)->whereIn('user_id',$data['oldUsers'])->delete();
                 Notification::make()->title('Gestión de usuarios realizada exitosamente')->success()->send();
             });
-    }
-
-    //Redirect the user to the tasks inside the selected group
-    protected function tasks(){
-        Action::make('visualizeTasks')->action(function (array $arguments){
-            return redirect()->route(Tasks::getUrl(), ['group_id'=>$arguments['user_id']]);
-        });
     }
 }
 

@@ -1,0 +1,343 @@
+:root{
+    --task-text-1: white;
+    --task-text-2: gray;
+    --user-tag: #905cc4;
+    --user-tag-background: #c59feb;
+    --scrollbar-track: #f2b723;
+    --scrollbar-background: gray;
+}
+
+.tasks-container{
+    width: 100%;
+    max-height: 770px;
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-flow: row wrap;
+    gap: 20px;
+}
+
+.symbology{
+    width: 100%;
+    height: 40px;
+    padding: 0px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 10px;
+}
+
+.symbology-element{
+    max-width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 5px;
+}
+
+.circle{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circle span{
+    width: 20px;
+    height: 20px;
+    display: block;
+    border-radius: 50%;
+    background-color: currentColor;
+}
+
+.circle.animated span{
+    animation: breath-circle 3s infinite;
+}
+
+.task-element{
+    width: 600px;
+    padding: 10px 10px 10px 20px;
+    box-sizing: border-box;
+    border: 2px solid var(--task-text-2);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+    gap: 5px;
+}
+
+.task-title-container{
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: [title]70% [actions] calc(30% - 10px);
+    grid-template-rows: 40px;
+    gap: 10px;
+}
+
+.task-title{
+    grid-column: title;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 10px;
+}
+
+.task-title h2{
+    font-size: 1.5em;
+    font-weight: bold;
+    letter-spacing: 1.4px;
+}
+
+.task-status{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-actions{
+    grid-column: actions;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.buttons-actions-container{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+.task-dates{
+    width: 100%;
+    height: 30px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-flow: row nowrap;
+    gap: 10px;
+}
+
+.task-date{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 5px;
+}
+
+.task-date p{
+    font-size: .9em;
+    color: var(--task-text-2);
+}
+
+.task-date-icon{
+    width: 15px;
+    height: 15px;
+}
+
+.task-user{
+    width: 100%;
+    height: 30px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.user-tag{
+    max-width: 200px;
+    padding-left: 5px;
+    color: var(--task-text-1);
+    background-color: var(--task-text-2);
+    border: 1px solid var(--task-text-1);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.user-tag p{
+    padding: 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.task-footer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-flow: row wrap;
+}
+
+.task-description{
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+}
+
+.task-description-content{
+    max-height: 160px;
+    overflow: hidden;
+    transition: max-height 3s cubic-bezier(0, 1, 0, 1);
+    color: var(--task-text-2);
+}
+
+.task-description-content.active{
+    max-height: 1000px;
+    display: block;
+    overflow-y: auto;
+    transition: max-height 2s ease-in-out;
+}
+
+.task-files{
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: left;
+    flex-flow: row wrap;
+    gap: 5px;
+}
+
+.task-files h3{
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+    font-size: 1em;
+    color: var(--task-text-1);
+    font-weight: bold;
+}
+
+.task-file{
+    width: calc(100% - 10px);
+    padding-left: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 5px;
+}
+
+.task-file-icon{
+    width: 15px;
+    height: 15px;
+    color: var(--task-text-1);
+}
+
+.task-expand-button{
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+}
+
+.arrow{
+    width: 60px;
+    height: 100%;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: arrow-up-down 3s infinite;
+}
+
+.arrow:hover{
+    cursor: pointer;
+}
+
+.arrow span{
+    width: 30px;
+    height: 1px;
+    border: 1px solid white;
+    transition: 2s;
+}
+
+.arrow span:nth-child(1){
+    transform: rotate(45deg) translateX(7px);
+}
+
+.arrow span:nth-child(2){
+    transform: rotate(-45deg) translateX(-7px);
+}
+
+.arrow.active span:nth-child(1){
+    transform: rotate(-45deg) translateX(7px);
+}
+
+.arrow.active span:nth-child(2){
+    transform: rotate(45deg) translateX(-7px);
+}
+
+@media (max-width: 550px){
+    .task-title h2{
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 300px) {
+
+    .task-title h2{
+        display: inline;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+@keyframes breath-circle {
+    0%{
+        transform: scale(.30);
+    }
+    50%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(.30);
+    }
+}
+
+@keyframes arrow-up-down {
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(8px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+@keyframes task-expand{
+
+}
