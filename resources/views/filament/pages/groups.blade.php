@@ -1,5 +1,9 @@
 <x-filament-panels::page>
 
+    @vite([
+        'resources/css/filament/groups/filamentGroups.css',
+        'resources/css/filament/buttons.css'
+    ])
     @assets
     <link rel="stylesheet" href="{{ asset('css/filament/groups/filamentGroups.css')}}">
     <link rel="stylesheet" href="{{ asset('css/filament/buttons.css')}}">

@@ -1,9 +1,9 @@
 <x-filament-panels::page>
 
-    @assets
-    <link rel="stylesheet" href="{{asset('css/filament/tasks/filamentTasks.css')}}">
-    <link rel="stylesheet" href="{{asset('css/filament/buttons.css')}}">
-    @endassets
+    @vite([
+        'resources/css/filament/tasks/filamentTasks.css',
+        'resources/css/filament/buttons.css'
+    ])
 
     <div class="tasks-container">
         <div class="symbology">
