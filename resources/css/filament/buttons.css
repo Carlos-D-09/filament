@@ -1,0 +1,54 @@
+:root{
+    --color-success: #5ac18e;
+    --color-succss-hover: #3a815e;
+    --color-info: #5496ec;
+    --color-info-hover: #4975af;
+    --color-danger: #ed6d6d;
+    --color-danger-hover: #b64c4c;
+}
+
+.success{
+    color: var(--color-success);
+}
+
+.info{
+    color: var(--color-info)
+}
+
+.danger{
+    color: var(--color-danger)
+}
+
+.success-icon{
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    color: var(--color-success);
+}
+
+.success-icon:hover{
+    cursor: pointer;
+    color: var(--color-succss-hover);
+}
+
+.info-icon{
+    width: 30px;
+    height: 30px;
+    color: var(--color-info);
+}
+
+.info-icon:hover{
+    cursor: pointer;
+    color: var(--color-info-hover);
+}
+
+.danger-icon{
+    width: 25px;
+    height: 25px;
+    color: var(--color-danger);
+}
+
+.danger-icon:hover{
+    cursor: pointer;
+    color: var(--color-danger-hover);
+}

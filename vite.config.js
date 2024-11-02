@@ -5,11 +5,11 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/css/filament/tasks/filamentTasks.css',
-                'resources/css/filament/groups/filamentGroups.css',
-                'resources/css/buttons.css',
                 'resources/css/app.css',
-                'resources/js/app.js'
+                'resources/js/app.js',
+                'resources/css/filament/groups/filamentGroups.css',
+                'resources/css/filament/tasks/filamentTasks.css',
+                'resources/css/filament/buttons.css'
             ],
             refresh: true,
         }),
