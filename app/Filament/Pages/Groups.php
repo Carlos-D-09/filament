@@ -7,6 +7,7 @@ use App\Models\GroupUser;
 use App\Models\User;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
+use Filament\Actions\EditAction;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Wizard\Step;
@@ -23,6 +24,8 @@ class Groups extends Page
     protected static string $view = 'filament.pages.groups';
 
     protected static ?string $title = 'Mis grupos';
+
+    protected static ?string $navigationGroup = 'Grupos';
 
     // Obtained the registered users by the logged user
     protected function getRegisteredUsers() {
@@ -78,7 +81,7 @@ class Groups extends Page
 
                 $groupUsers = [];
 
-                // Register the selected users inside the group
+                // Get the user to save inside the group
                 foreach ($data['users'] as $user) {
                     $groupUsers[] = [
                         'user_id' => $user,
@@ -109,24 +112,29 @@ class Groups extends Page
 
     //Action to edit the selected group
     protected function editAction(): Action{
-        return Action::make('edit')->modalHeading('Editar grupo')
-            ->modalDescription('Formulario edición de grupo')->color('info')->modalButton('Modificar')
-            ->modalCancelActionLabel('Cancelar')
-            ->fillForm(function (array $arguments): array {
-                return Group::find($arguments['id'])->toArray();
+        return EditAction::make('edit')
+            ->record(function (array $arguments): Group {
+                return Group::find($arguments['id']);
             })
+            ->modalHeading('Editar grupo')
+            ->modalDescription('Formulario edición de grupo')
+            ->color('info')
+            ->modalButton('Modificar')
+            ->modalCancelActionLabel('Cancelar')
             ->form([
-                TextInput::make('name')->label('Nombre')->required()->maxLength(150),
-                RichEditor::make('description')->label('Descripción')->required()->maxLength(300)->columnSpan(2)
-            ])->action(function (array $data, array $arguments){
-                $group = Group::find($arguments['id']);
-                $group->name = $data['name'];
-                $group->description = $data['description'];
-                $group->save();
-            });
+                TextInput::make('name')
+                    ->label('Nombre')
+                    ->required()
+                    ->maxLength(150),
+                RichEditor::make('description')
+                    ->label('Descripción')
+                    ->required()
+                    ->maxLength(300)
+                    ->columnSpan(2)
+            ]);
     }
 
-    //Action to administrate the users insede the selected group
+    //Action to administrate the users inside the selected group
     protected function adminUsers(){
         return Action::make('adminUsers')->modalHeading('Gestión de usuarios')
             ->modalDescription('Añade o remueve usuarios del grupo')->color('warning')->modalButton('Guardar')

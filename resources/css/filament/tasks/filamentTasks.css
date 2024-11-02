@@ -10,8 +10,8 @@
 .tasks-container{
     width: 100%;
     max-height: 770px;
-    box-sizing: border-box;
     padding: 10px;
+    box-sizing: border-box;
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -168,8 +168,8 @@
 
 .user-tag{
     max-width: 200px;
-    padding-left: 5px;
     color: var(--task-text-1);
+    padding: 0px 5px 0px 5px;
     background-color: var(--task-text-2);
     border: 1px solid var(--task-text-1);
     border-radius: 6px;
@@ -202,11 +202,26 @@
     justify-content: left;
 }
 
+.task-description ol, .task-description ul{
+    margin-left: 40px;
+}
+.task-description ul{
+    list-style-type: disc;
+}
+
+.task-description ol {
+    list-style-type: decimal;
+}
+
+.task-description li {
+    list-style-position: outside;
+    margin-bottom: 5px;
+}
+
 .task-description-content{
-    max-height: 160px;
     overflow: hidden;
-    transition: max-height 3s cubic-bezier(0, 1, 0, 1);
     color: var(--task-text-2);
+    /* transition: max-height 3s cubic-bezier(0, 1, 0, 1); */
 }
 
 .task-description-content.active{
@@ -242,6 +257,11 @@
     align-items: center;
     justify-content: left;
     gap: 5px;
+}
+
+.task-file a:hover{
+    color: var(--task-text-1);
+    text-decoration: underline;
 }
 
 .task-file-icon{

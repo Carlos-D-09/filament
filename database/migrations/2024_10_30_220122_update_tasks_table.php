@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('files', function (Blueprint $table) {
-            $table->id();
-            $table->string('name',100);
-            $table->string('route',200);
-            $table->timestamps();
-            $table->softDeletes();
-            $table->foreignId('task_id');
+        Schema::table('tasks', function(Blueprint $table){
+            $table->boolean('completed')->default(false);
         });
     }
 
@@ -26,6 +21,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('files');
+        //
     }
 };

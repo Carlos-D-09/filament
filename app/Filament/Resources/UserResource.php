@@ -20,16 +20,18 @@ use Illuminate\Support\Facades\Auth;
 
 class UserResource extends Resource
 {
-    protected static ?string $label = 'Usuarios';
+    protected static ?string $label = 'Listado de usuarios';
 
     protected static ?string $model = User::class;
+
+    protected static ?string $navigationGroup = 'Usuarios';
+
+    protected static ?string $navigationIcon = 'heroicon-s-user-group';
 
     public static function canViewAny(): bool
     {
         return Auth::user()->role->role === 'Administrador';
     }
-
-    protected static ?string $navigationIcon = 'heroicon-s-user-group';
 
     public static function form(Form $form): Form
     {
@@ -78,7 +80,7 @@ class UserResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageUsers::route('/'),
+            'index' => Pages\ManageUsers::route('/')
         ];
     }
 }

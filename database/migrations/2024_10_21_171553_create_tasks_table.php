@@ -15,15 +15,15 @@ return new class extends Migration
             $table->id();
             $table->string('name',150);
             $table->string('description',500);
-            $table->timestamp('start_at');
-            $table->timestamp('end_at');
+            $table->timestamp('start_at')->nullable();
+            $table->timestamp('end_at')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
             $table->foreignId('group_id');
             $table->unsignedBigInteger('created_by');
             $table->foreign('created_by')->references('id')->on('users');
-            $table->unsignedBigInteger('assigned_to');
+            $table->unsignedBigInteger('assigned_to')->nullable();
             $table->foreign('assigned_to')->references('id')->on('users');
 
         });

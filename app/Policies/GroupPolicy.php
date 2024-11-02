@@ -29,7 +29,9 @@ class GroupPolicy
      */
     public function create(User $user)
     {
-        return $user->role->role === 'Administrador' ? Response::allow() : Response::deny('No tienes permiso de crear usuarios');
+        return $user->role->role === 'Administrador' ?
+            Response::allow() :
+            Response::deny('No tienes permiso de crear usuarios');
     }
 
     /**
@@ -37,7 +39,9 @@ class GroupPolicy
      */
     public function update(User $user, Group $group)
     {
-        //
+        return $user->role->role === 'Administrador' && $group->user_id == $user->id ?
+            Response::allow() :
+            Response::deny('No tienes permiso de crear usuarios');
     }
 
     /**
@@ -45,7 +49,9 @@ class GroupPolicy
      */
     public function delete(User $user, Group $group)
     {
-        //
+        return $user->role->role === 'Administrador' && $group->user_id == $user->id ?
+            Response::allow() :
+            Response::deny('No tienes permiso de crear usuarios');
     }
 
     /**

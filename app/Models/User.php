@@ -64,7 +64,7 @@ class User extends Authenticatable
             }
 
             //Asignar el id del usuario loggeado
-            $user->registered_by = Auth::id();
+            $user->registered_by ? null : $user->registered_by = Auth::id();
         });
 
         static::updating(function ($user) {

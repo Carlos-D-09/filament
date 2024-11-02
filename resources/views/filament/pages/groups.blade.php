@@ -1,9 +1,8 @@
 <x-filament-panels::page>
-
-    @assets
-    <link rel="stylesheet" href="{{ asset('css/filament/groups/filamentGroups.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/filament/buttons.css')}}">
-    @endassets
+    @vite([
+        'resources/css/filament/groups/filamentGroups.css',
+        'resources/css/buttons.css'
+    ])
 
     <div class="groups-container">
         @foreach ($this->getGroups() as $group)
